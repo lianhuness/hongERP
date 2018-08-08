@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+<!-- 标题-->
+{% endblock %}
+
+{% block container %}
+
+<h1>
+    用户列表
+</h1>
+
+<table class="table table-bordered">
+    {% for user in users %}
+        <tr>
+            <td> {{ user.username }}</td>
+            <td>  <input type="checkbox" {% if user.isAdmin %} checked {% endif %}  >  管理员  {{user.isAdmin}}</td>  </td>
+            <td> hello </td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}登陆{% endblock %}
+{% block container %}
+    <div class="ui middle aligned center aligned grid">
+
+        <h1> 请输入用户名和密码 </h1>
+
+
+        <form class="ui large form" action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <table class="table">
+                {{  login_form.as_table }}
+
+            </table>
+
+
+            <input name="submit" value="登入" type="submit">
+        </form>
+
+        <!--<input name="submit" value="登入" type="submit">-->
+            <!--<form class="ui large form" method="post">-->
+                <!--{% csrf_token %}-->
+                <!--<div class="ui stacked segment">-->
+                    <!--<div class="field">-->
+                        <!--<div class="ui left icon input">-->
+                            <!--<i class="user icon"></i><input name="username" placeholder="用户名" type="text">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="field">-->
+                        <!--<div class="ui left icon input">-->
+                            <!--<i class="lock icon"></i><input name="password" placeholder="密码" type="password">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="ui fluid large teal submit button">-->
+                        <!--<input name="submit" value="登入" type="submit">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="ui error message"></div>-->
+            <!--</form>-->
+
+    </div>
+{% endblock %}
