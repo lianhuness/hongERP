@@ -5,6 +5,27 @@
 
 {% block container %}
 
+<script>
+    $(document).ready(function(){
+        $(".perm_checkbox").change(function(e) {
+            checked = false
+            if ($(this).prop("checked")){
+                checked = true
+            }
+
+            $.post('/backend/update_perm/'+$(this).attr('userid'),
+                {'csrfmiddlewaretoken': '{{ csrf_token}}',
+                    'PERM': $(this).attr('perm'),
+                    'checked': checked
+                },
+                function(data){
+                    alert(data);
+                })
+        });
+    });
+</script>
+
+
 <h1>
     用户列表
 </h1>
@@ -13,9 +34,18 @@
     {% for user in users %}
         <tr>
             <td> {{ user.username }}</td>
-            <td>  <input type="checkbox" {% if user.isAdmin %} checked {% endif %}  >  管理员  {{user.isAdmin}}</td>  </td>
-            <td> hello </td>
+            <td> {{ user.first_name }}</td>
+            <td>  <input class='perm_checkbox' perm = 'ADMIN' userid={{ user.id }} type="checkbox" {% if user.isAdmin %} checked {% endif %}  >
+                管理员
+            </td>
+
+            <td>
+                <ul>
+                    <li> <a href="{% url 'reset_pwd' id=user.pk %}"> 密码重置 </a></li>
+                </ul>
+            </td>
         </tr>
     {% endfor %}
 </table>
+
 {% endblock %}
