@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'backend',
     'page',
+    'team',
+    'erp',
 ]
 
 MIDDLEWARE = [

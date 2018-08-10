@@ -33,4 +33,6 @@ urlpatterns = [
 
     url(r'backend/', include('backend.urls')),
     url(r'pages/', include('page.urls')),
+    url(r'team/', include('team.urls')),
+
 ]+ static( settings.MEDIA_URL , document_root=settings.MEDIA_ROOT )

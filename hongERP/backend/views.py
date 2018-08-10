@@ -49,7 +49,6 @@ def reset_pwd(request, id):
     return redirect(reverse('list_user'))
 
 
-
 @permission_required('auth.add_user')
 def update_perm(request, id):
     if request.method == 'POST':
@@ -66,7 +65,6 @@ def update_perm(request, id):
             return HttpResponse("错误")
         return HttpResponse("PERMISSION UPDATED SUCCESS!")
     return HttpResponse("错误")
-
 
 class UserProfileForm(forms.Form):
     password = forms.CharField(label='密码', widget=forms.PasswordInput())
@@ -85,7 +83,7 @@ def user_profile(request):
             return HttpResponseRedirect('/')
     else:
         form = UserProfileForm()
-        form.fields['real_name'].initial =request.user.first_name
+        form.fields['real_name'].initial = request.user.first_name
 
     return render(request, 'user_profile.html', {'user': request.user, 'form': form})
 
