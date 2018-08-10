@@ -14,8 +14,11 @@ class Client(models.Model):
     district = models.CharField(max_length=100, verbose_name='地区')
     source = models.CharField(max_length=50, verbose_name='客户来源')
     note = models.TextField(verbose_name='其他')
-    
+
     def __unicode__(self):
+        return self.name
+
+    def __str__(self):
         return self.name
 
 

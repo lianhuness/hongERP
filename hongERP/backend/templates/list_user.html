@@ -39,6 +39,10 @@
                 管理员
             </td>
 
+            <td>  <input class='perm_checkbox' perm = 'SALES' userid={{ user.id }} type="checkbox" {% if user.isSales %} checked {% endif %}  >
+                 销售员
+            </td>
+
             <td>
                 <ul>
                     <li> <a href="{% url 'reset_pwd' id=user.pk %}"> 密码重置 </a></li>

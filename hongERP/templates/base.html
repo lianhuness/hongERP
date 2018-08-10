@@ -57,6 +57,18 @@
   </div>
   {% endif %}
 
+  {% if request.user.isSales %}
+  <div class="container">
+      <table class="table">
+          <tr>
+              <td> 销售员控件 </td>
+              <td> <a href="{% url 'my_clients' %}" > 我的客户 </a> </td>
+              <td> <a href="{% url 'add_client' %}"> 添加新客户 </a></td>
+          </tr>
+      </table>
+  </div>
+  {% endif %}
+
   <div class="container">
       <table class="table, table-boarded">
           <tr>

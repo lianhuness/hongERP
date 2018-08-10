@@ -2,7 +2,7 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect, redirec
 from django.contrib import messages,auth
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import permission_required, login_required
-from django.contrib.auth.models import User, Permission
+from django.contrib.auth.models import User, Permission, Group
 
 # Create your views here.
 from django import forms
@@ -61,6 +61,12 @@ def update_perm(request, id):
                 user.user_permissions.add(permission)
             else:
                 user.user_permissions.remove(permission)
+        elif perm == 'SALES':
+            group = Group.objects.get(name=perm)
+            if checked == 'true':
+                group.user_set.add(user)
+            else:
+                group.user_set.remove(user)
         else:
             return HttpResponse("错误")
         return HttpResponse("PERMISSION UPDATED SUCCESS!")

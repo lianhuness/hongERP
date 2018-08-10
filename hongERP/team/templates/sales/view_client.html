@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+客户-{{client}}
+{% endblock %}
+
+{% block container %}
+
+<h1>
+    客户- {{client}} - {{client.id }}
+</h1>
+
+<div class="row">
+    <h2> 客户信息 - <a href="{% url 'edit_client' id=client.id %}"> 修改 </a></h2>
+    <table class="table">
+        <tr><th> 业务员 </th>  <td>  {{client.sales.first_name }}</td> </tr>
+        <tr><th> 客户名称 </th>  <td>  {{client.name }}</td> </tr>
+        <tr><th> 地区  </th>  <td>  {{client.district }}</td> </tr>
+    </table>
+</div>
+
+{% endblock %}
