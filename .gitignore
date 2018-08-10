@@ -104,3 +104,7 @@ venv.bak/
 .mypy_cache/
 .idea/workspace.xml
 .idea/workspace.xml
+
+
+hongERP/team/migrations/0002_client_note.py
+hongERP/team/migrations/0001_initial.py
